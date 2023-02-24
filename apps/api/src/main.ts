@@ -1,35 +1,44 @@
+import { INestApplication } from '@nestjs/common';
 /**
  * This is not a production server yet!
  * This is only a minimal backend to get started.
  */
 
-import { PrismaClient } from '@react-full-stack/database';
-import express from 'express';
-import * as path from 'path';
+import { Logger } from '@nestjs/common';
+import { NestFactory } from '@nestjs/core';
+import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
-const app = express();
+import { AppModule } from './app.module';
+import { PrismaService } from './prisma/prisma.service';
 
-const prisma = new PrismaClient();
-await prisma.$connect();
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
 
-app.use('/assets', express.static(path.join(__dirname, 'assets')));
+  const prismaService = app.get(PrismaService);
+  await prismaService.enableShutdownHooks(app);
 
-app.get('/api', (req, res) => {
-  res.send({ message: 'Welcome to api!' });
-});
+  configureApp(app);
+  addSwagger(app);
 
-app.get('/test', async (req, res) => {
-  await prisma.user.create({
-    data: {
-      email: 'test',
-    },
-  });
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
+  Logger.log(`🚀 Application is running on: http://localhost:${port}/api`);
+}
 
-  res.send({ message: 'Welcome to test!' });
-});
+function addSwagger(app: INestApplication) {
+  const config = new DocumentBuilder()
+    .setTitle('Cats example')
+    .setDescription('The cats API description')
+    .setVersion('1.0')
+    .addTag('cats')
+    .build();
 
-const port = process.env.PORT || 3000;
-const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
-});
-server.on('error', console.error);
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('swagger', app, document);
+}
+
+function configureApp(app: INestApplication) {
+  app.setGlobalPrefix('api');
+}
+
+bootstrap();
