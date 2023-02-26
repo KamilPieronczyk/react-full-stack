@@ -9,8 +9,9 @@ const StyledUi = styled.div`
 
 export function Ui(props: UiProps) {
   return (
-    <StyledUi>
-      <h1>Welcome to Ui!</h1>
+    <StyledUi className="bg-slate-600">
+      <h1 className="text-primary">Welcome to Ui! 2</h1>
+      <button className="btn-blue">hm</button>
     </StyledUi>
   );
 }

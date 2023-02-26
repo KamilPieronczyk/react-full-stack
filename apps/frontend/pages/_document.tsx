@@ -1,18 +1,9 @@
 /* eslint-disable react/display-name */
-import Document, {
-  Html,
-  Head,
-  Main,
-  NextScript,
-  DocumentContext,
-  DocumentInitialProps,
-} from 'next/document';
+import Document, { DocumentContext, DocumentInitialProps, Head, Html, Main, NextScript } from 'next/document';
 import { ServerStyleSheet } from 'styled-components';
 
 export default class CustomDocument extends Document {
-  static async getInitialProps(
-    ctx: DocumentContext
-  ): Promise<DocumentInitialProps> {
+  static async getInitialProps(ctx: DocumentContext): Promise<DocumentInitialProps> {
     const originalRenderPage = ctx.renderPage;
 
     const sheet = new ServerStyleSheet();
@@ -32,7 +23,10 @@ export default class CustomDocument extends Document {
   render() {
     return (
       <Html>
-        <Head>{this.props.styles}</Head>
+        <Head>
+          {this.props.styles}
+          {/* <link href="/css/variables.css" rel="stylesheet" /> */}
+        </Head>
         <body>
           <Main />
           <NextScript />

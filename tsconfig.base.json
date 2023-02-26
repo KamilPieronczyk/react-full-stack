@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@react-full-stack/database": ["libs/database/src/index.ts"],
+      "@react-full-stack/models": ["libs/models/src/index.ts"],
       "@react-full-stack/ui": ["libs/ui/src/index.ts"]
     }
   },
