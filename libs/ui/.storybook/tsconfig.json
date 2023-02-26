@@ -7,7 +7,8 @@
   "files": [
     "../../../node_modules/@nrwl/react/typings/styled-jsx.d.ts",
     "../../../node_modules/@nrwl/react/typings/cssmodule.d.ts",
-    "../../../node_modules/@nrwl/react/typings/image.d.ts"
+    "../../../node_modules/@nrwl/react/typings/image.d.ts",
+    "../styled.d.ts"
   ],
   "exclude": ["../**/*.spec.ts", "../**/*.spec.js", "../**/*.spec.tsx", "../**/*.spec.jsx"],
   "include": [
@@ -17,6 +18,7 @@
     "../src/**/*.stories.tsx",
     "../src/**/*.stories.mdx",
     "*.ts",
-    "*.js"
+    "*.js",
+    "withTheme.decorator.tsx"
   ]
 }

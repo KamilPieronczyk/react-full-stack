@@ -4,14 +4,14 @@ import styled from 'styled-components';
 export interface UiProps {}
 
 const StyledUi = styled.div`
-  color: pink;
+  color: ${(props) => props.theme.colors.primary};
 `;
 
 export function Ui(props: UiProps) {
   return (
-    <StyledUi className="bg-slate-600">
-      <h1 className="text-primary">Welcome to Ui! 2</h1>
-      <button className="btn-blue">hm</button>
+    <StyledUi>
+      <h1>Welcome to Ui! 2</h1>
+      <button>hm</button>
     </StyledUi>
   );
 }
