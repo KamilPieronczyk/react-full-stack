@@ -12,7 +12,7 @@ const Story: ComponentMeta<typeof Button> = {
     },
     color: {
       control: {
-        options: ['primary', 'secondary'],
+        options: ['primary', 'secondary', 'text'],
       },
     },
   },
