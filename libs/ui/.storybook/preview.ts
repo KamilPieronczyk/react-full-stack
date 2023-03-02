@@ -8,3 +8,18 @@ import './css/tailwind.css';
 import { withTheme } from './withTheme.decorator';
 
 export const decorators = [withTheme];
+
+export const parameters = {
+  backgrounds: {
+    default: 'dark',
+    values: [
+      {
+        name: 'dark',
+        value: '#191e29',
+      },
+    ],
+  },
+  viewport: {
+    defaultViewport: 'mobile2',
+  },
+};

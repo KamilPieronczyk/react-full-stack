@@ -7,5 +7,3 @@ export const withTheme = (Story: ComponentStory<any>) => (
     <Story />
   </ThemeProvider>
 );
-
-// export const withTheme = (Story: ComponentStory<any>) => <Story />;
