@@ -2,20 +2,20 @@ import { createTheme } from '@mui/material';
 
 export const darkTheme = createTheme({
   palette: {
-    mode: 'dark',
     primary: {
-      main: '#448FF2',
+      main: '#132d46',
     },
     secondary: {
-      main: '#AB63F2',
+      main: '#01c38d',
     },
-    warning: {
-      main: '#F29D35',
+    neutral: {
+      main: '#fff',
+      contrastText: '#333',
     },
-    success: {
-      main: '#92F266',
+    background: {
+      default: '#191e29',
     },
-    divider: '#262626',
+    divider: '#696E79',
   },
   typography: {
     fontSize: 25.6,

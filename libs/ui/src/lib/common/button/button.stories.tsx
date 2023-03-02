@@ -12,7 +12,8 @@ const Story: ComponentMeta<typeof Button> = {
     },
     color: {
       control: {
-        options: ['primary', 'secondary', 'text'],
+        type: 'radio',
+        options: ['primary', 'secondary', 'neutral'],
       },
     },
   },
@@ -29,4 +30,9 @@ Primary.args = {
 export const Secondary = Template.bind({});
 Secondary.args = {
   color: 'secondary',
+};
+
+export const Neutral = Template.bind({});
+Neutral.args = {
+  color: 'neutral',
 };
