@@ -11,7 +11,7 @@ const defaultProps: CardProps = {
 const StyledCard = styled(MuiCard)<MuiCardProps>((props) => ({
   backgroundColor: props.theme.palette.primary.main,
   color: props.theme.palette.primary.contrastText,
-  borderRadius: '1.6rem',
+  borderRadius: '1rem',
 }));
 
 export function Card(props: CardProps) {

@@ -12,12 +12,21 @@ export const darkTheme = createTheme({
       main: '#fff',
       contrastText: '#333',
     },
+    blue: {
+      main: '#598DF9',
+    },
+    orange: {
+      main: '#F0AF43',
+    },
+    purple: {
+      main: '#B866F9',
+    },
+    green: {
+      main: '#97FB71',
+    },
     background: {
       default: '#191e29',
     },
     divider: '#696E79',
-  },
-  typography: {
-    fontSize: 25.6,
   },
 });

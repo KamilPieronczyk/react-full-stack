@@ -1,8 +1,6 @@
-import { LinearProgress, Typography } from '@mui/material';
-import CardContent from '@mui/material/CardContent';
-import { Card } from '../common/card/card';
+import { CardContent, Typography } from '@mui/material';
+import { Card, LinearProgress } from '../common';
 
-/* eslint-disable-next-line */
 export interface ProgressCard3DProps {
   title: string;
   description: string;
@@ -23,16 +21,11 @@ export function ProgressCard3D(props: ProgressCard3DProps) {
           <Typography variant="h6" mt={3}>
             {progress}%
           </Typography>
-          <LinearProgress
-            value={progress}
-            variant="determinate"
-            color="secondary"
-            className="rounded-lg !h-3 !bg-gray-400"
-          ></LinearProgress>
+          <LinearProgress value={progress} className="rounded-lg !h-3 !bg-gray-400"></LinearProgress>
         </CardContent>
       </Card>
-      <Card className="h-20 -z-20 absolute -bottom-6 left-6 right-6"></Card>
-      <Card className="h-20 -z-30 absolute -bottom-12 left-12 right-12"></Card>
+      <Card className="h-20 -z-20 absolute -bottom-3 left-3 right-3"></Card>
+      <Card className="h-20 -z-30 absolute -bottom-6 left-6 right-6"></Card>
     </div>
   );
 }
