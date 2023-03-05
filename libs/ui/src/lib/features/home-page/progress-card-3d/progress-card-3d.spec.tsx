@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 
 import { ThemeProvider } from '@emotion/react';
-import { darkTheme } from '../theme';
+import { darkTheme } from '../../../theme';
 import ProgressCard3D from './progress-card-3d';
 
 describe('ProgressCard3D', () => {

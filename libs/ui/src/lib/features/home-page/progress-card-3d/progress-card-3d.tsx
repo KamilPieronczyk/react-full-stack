@@ -1,5 +1,5 @@
 import { CardContent, Typography } from '@mui/material';
-import { Card, LinearProgress } from '../common';
+import { Card, LinearProgress } from '../../../common';
 
 export interface ProgressCard3DProps {
   title: string;

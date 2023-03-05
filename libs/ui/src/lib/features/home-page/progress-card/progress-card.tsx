@@ -4,7 +4,7 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import { CardActionArea, CardContent, Typography } from '@mui/material';
 import { SpecialColors } from '@react-full-stack/models';
-import { Card, FilledIconButton, LinearProgress } from '../common';
+import { Card, FilledIconButton, LinearProgress } from '../../../common';
 
 const ProgressCardIcons = {
   books: <AutoStoriesIcon />,
