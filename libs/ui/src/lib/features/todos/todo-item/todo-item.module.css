@@ -1,0 +1,73 @@
+:root {
+  --animation-time: 0.5s;
+}
+
+.icon__container {
+  position: relative;
+}
+
+.icon--checked,
+.icon--unchecked {
+  animation: none;
+  position: absolute;
+  right: 0;
+  translate: 0 -50%;
+}
+
+.icon--unchecked {
+  scale: 1;
+}
+
+.icon--checked {
+  scale: 0;
+}
+
+.card--checked .icon--unchecked {
+  scale: 0;
+}
+
+.card--checked .icon--checked {
+  scale: 1;
+}
+
+.card--touched .icon--checked {
+  animation: var(--animation-time) ease forwards bounce-out;
+}
+
+.card--touched .icon--unchecked {
+  scale: 0;
+  animation: var(--animation-time) ease var(--animation-time) forwards bounce-in;
+}
+
+.card--touched.card--checked .icon--checked {
+  scale: 0;
+  animation: var(--animation-time) ease var(--animation-time) forwards bounce-in;
+}
+
+.card--touched.card--checked .icon--unchecked {
+  animation: var(--animation-time) ease forwards bounce-out;
+}
+
+@keyframes bounce-in {
+  0% {
+    scale: 0;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 1;
+  }
+}
+
+@keyframes bounce-out {
+  0% {
+    scale: 1;
+  }
+  50% {
+    scale: 1.2;
+  }
+  100% {
+    scale: 0;
+  }
+}

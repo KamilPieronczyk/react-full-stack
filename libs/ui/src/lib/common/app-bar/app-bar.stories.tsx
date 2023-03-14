@@ -19,8 +19,8 @@ Default.args = {
   avatarSrc: 'https://mui.com/static/images/avatar/1.jpg',
 };
 
-export const WithoutBackButtonDefault = Template.bind({});
-WithoutBackButtonDefault.args = {
+export const WithoutBackButton = Template.bind({});
+WithoutBackButton.args = {
   title: 'Home',
   avatarSrc: 'https://mui.com/static/images/avatar/1.jpg',
   onBackClick: undefined,
