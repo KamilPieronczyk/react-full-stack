@@ -79,6 +79,7 @@
     "@emotion/react": "^11.10.6",
     "@emotion/styled": "^11.10.6",
     "@fontsource/roboto": "^4.5.8",
+    "@headlessui/react": "^1.7.13",
     "@hookform/resolvers": "^2.9.11",
     "@mui/base": "^5.0.0-alpha.118",
     "@mui/icons-material": "^5.11.9",

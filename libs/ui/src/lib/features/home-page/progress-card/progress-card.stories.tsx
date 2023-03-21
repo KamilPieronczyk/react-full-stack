@@ -1,5 +1,6 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import { ProgressCard, ProgressCardIconsNames } from './progress-card';
+import { CATEGORIES } from 'libs/models/src/lib/constants/categories';
+import { ProgressCard } from './progress-card';
 
 const Story: ComponentMeta<typeof ProgressCard> = {
   component: ProgressCard,
@@ -14,7 +15,7 @@ const Story: ComponentMeta<typeof ProgressCard> = {
     icon: {
       control: {
         type: 'radio',
-        options: ProgressCardIconsNames,
+        options: Object.keys(CATEGORIES),
       },
     },
     color: {

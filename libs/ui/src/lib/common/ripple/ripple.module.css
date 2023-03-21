@@ -10,7 +10,7 @@
   background-color: white;
   opacity: 0;
   scale: 0;
-  animation: ripple-effect 0.7s linear;
+  animation: ripple-effect 0.5s linear;
 }
 
 @keyframes ripple-effect {
@@ -18,8 +18,14 @@
     scale: 0;
     opacity: 0;
   }
+  60% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.1;
+  }
   100% {
     scale: 1;
-    opacity: 0.2;
+    opacity: 0;
   }
 }

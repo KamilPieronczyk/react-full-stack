@@ -1,20 +1,8 @@
 import { useTheme } from '@emotion/react';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
-import LocalMoviesIcon from '@mui/icons-material/LocalMovies';
 import { CardActionArea, CardContent, Typography } from '@mui/material';
-import { SpecialColors } from '@react-full-stack/models';
+import { CategoryType, SpecialColors } from '@react-full-stack/models';
 import { Card, FilledIconButton, LinearProgress } from '../../../common';
-
-const ProgressCardIcons = {
-  books: <AutoStoriesIcon />,
-  movies: <LocalMoviesIcon />,
-  music: <LibraryMusicIcon />,
-};
-
-export type TProgressCardIconsNames = keyof typeof ProgressCardIcons;
-
-export const ProgressCardIconsNames = Object.keys(ProgressCardIcons) as TProgressCardIconsNames[];
+import CategoryIcon from '../../../common/category-icon/category-icon';
 
 export interface ProgressCardProps {
   color?: SpecialColors;
@@ -22,7 +10,7 @@ export interface ProgressCardProps {
   newTasks: number;
   completed: number;
   total: number;
-  icon: TProgressCardIconsNames;
+  icon: CategoryType;
 }
 
 const defaultProps: ProgressCardProps = {
@@ -40,7 +28,7 @@ export function ProgressCard(props: ProgressCardProps) {
 
   const progress = calculateProgress(completed, total);
   const badgeBackgroundColor = theme.palette[color || 'secondary'].main;
-  const iconNode = ProgressCardIcons[icon];
+  const iconNode = <CategoryIcon name={icon} />;
 
   return (
     <Card className="cursor-pointer">
