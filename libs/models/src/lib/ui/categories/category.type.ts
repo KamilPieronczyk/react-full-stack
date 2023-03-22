@@ -1,3 +1,1 @@
-import { CATEGORIES } from '../../constants/categories';
-
-export type CategoryType = keyof typeof CATEGORIES;
+export type CategoryType = 'books' | 'movies' | 'music' | 'task';

@@ -7,7 +7,11 @@ module.exports = {
         success: '#92F266',
         warning: '#F29D35',
         dark: '#191e29',
-        light: '#FFFFFF'
+        light: '#FFFFFF',
+        blue:'#598DF9',
+        orange: '#F0AF43',
+        purple: '#B866F9',
+        green: '#97FB71',
       }
     },
   },
@@ -16,6 +20,14 @@ module.exports = {
   },
   safelist: [
     'bg-primary',
-    'bg-secondary'
+    'bg-secondary',
+    'bg-success',
+    'bg-warning',
+    'bg-dark',
+    'bg-light',
+    'bg-blue',
+    'bg-orange',
+    'bg-purple',
+    'bg-green',
   ]
 };

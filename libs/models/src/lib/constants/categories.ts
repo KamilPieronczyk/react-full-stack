@@ -1,19 +1,19 @@
-import { IToDoCategory } from '../ui';
+import { CategoryType, IToDoCategory } from '../ui';
 
-export const CATEGORIES = {
-  books: <IToDoCategory>{
+export const CATEGORIES: Record<CategoryType, IToDoCategory> = {
+  books: {
     name: 'Books',
     color: 'blue',
   },
-  movies: <IToDoCategory>{
+  movies: {
     name: 'Movies',
     color: 'green',
   },
-  music: <IToDoCategory>{
+  music: {
     name: 'Music',
     color: 'orange',
   },
-  task: <IToDoCategory>{
+  task: {
     name: 'Task',
     color: 'purple',
   },
