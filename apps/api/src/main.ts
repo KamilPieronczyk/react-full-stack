@@ -26,12 +26,7 @@ async function bootstrap() {
 }
 
 function addSwagger(app: INestApplication) {
-  const config = new DocumentBuilder()
-    .setTitle('Cats example')
-    .setDescription('The cats API description')
-    .setVersion('1.0')
-    .addTag('cats')
-    .build();
+  const config = new DocumentBuilder().setTitle('TODO - Api').setDescription('TODO api').setVersion('1.0').build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
