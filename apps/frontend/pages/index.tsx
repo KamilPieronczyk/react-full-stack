@@ -1,3 +1,5 @@
+import Link from 'next/link';
+
 export function Index() {
   return (
     <div className="bg-gray-50">
@@ -22,6 +24,24 @@ export function Index() {
             >
               Learn more
             </a>
+          </div>
+        </div>
+        <div>
+          <div className="inline-flex rounded-md shadow">
+            <Link
+              href="/api/auth/login"
+              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+            >
+              Login
+            </Link>
+          </div>
+          <div className="ml-3 inline-flex rounded-md shadow">
+            <Link
+              href="/api/auth/logout"
+              className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700"
+            >
+              Logout
+            </Link>
           </div>
         </div>
       </div>

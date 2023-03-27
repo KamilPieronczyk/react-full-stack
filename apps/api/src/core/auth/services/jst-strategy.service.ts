@@ -1,8 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
+import { isJwtPayload } from 'apps/api/src/utils/guards/is-jwt-payload';
 import * as dotenv from 'dotenv';
 import { passportJwtSecret } from 'jwks-rsa';
 import { ExtractJwt, Strategy } from 'passport-jwt';
+import { IJwtPayload } from './../../../models/auth/jwt-payload.interface';
 
 dotenv.config();
 
@@ -24,8 +26,11 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  validate(payload: unknown): unknown {
-    console.log(payload);
-    return payload;
+  validate(payload: unknown): IJwtPayload {
+    if (isJwtPayload(payload)) {
+      return payload;
+    }
+
+    throw new Error('Invalid JWT payload');
   }
 }

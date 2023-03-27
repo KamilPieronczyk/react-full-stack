@@ -1,4 +1,4 @@
-import { INestApplication } from '@nestjs/common';
+import { INestApplication, ValidationPipe } from '@nestjs/common';
 /**
  * This is not a production server yet!
  * This is only a minimal backend to get started.
@@ -18,6 +18,7 @@ async function bootstrap() {
   await prismaService.enableShutdownHooks(app);
 
   configureApp(app);
+  configureCORS(app);
   addSwagger(app);
 
   const port = process.env.PORT || 3000;
@@ -26,7 +27,12 @@ async function bootstrap() {
 }
 
 function addSwagger(app: INestApplication) {
-  const config = new DocumentBuilder().setTitle('TODO - Api').setDescription('TODO api').setVersion('1.0').build();
+  const config = new DocumentBuilder()
+    .setTitle('TODO - Api')
+    .setDescription('TODO api')
+    .setVersion('1.0')
+    .addBearerAuth()
+    .build();
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('swagger', app, document);
@@ -34,6 +40,15 @@ function addSwagger(app: INestApplication) {
 
 function configureApp(app: INestApplication) {
   app.setGlobalPrefix('api');
+}
+
+function configureCORS(app: INestApplication) {
+  app.enableCors();
+  app.useGlobalPipes(
+    new ValidationPipe({
+      disableErrorMessages: true,
+    })
+  );
 }
 
 bootstrap();
