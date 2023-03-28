@@ -1,7 +1,7 @@
 import { Controller, Get, HttpCode, Res } from '@nestjs/common';
-import { Authorize } from 'apps/api/src/core/decorators';
-import { ApiResponseBuilder } from 'apps/api/src/utils/helpers/api-response-builder';
 import { Response } from 'express';
+import { Authorize } from '../../../core/decorators';
+import { ApiResponseBuilder } from '../../../utils/helpers/api-response-builder';
 import { CategoriesService } from '../services/categories.service';
 
 @Controller('categories')

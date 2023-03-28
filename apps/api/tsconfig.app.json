@@ -9,6 +9,6 @@
     "composite": true
   },
   "exclude": ["jest.config.ts", "src/**/*.spec.ts", "src/**/*.test.ts"],
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "../../libs/models/src/**/*.ts"],
   "files": ["../../libs/database/src/index.ts"]
 }

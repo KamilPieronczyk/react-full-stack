@@ -1,7 +1,6 @@
-import { IApiError } from '../../models/api-error.interface';
-import { InternalError } from '../errors/internal-error.error';
+import { HttpException, InternalServerErrorException } from '@nestjs/common';
 
-export class Result<TSuccess, TError extends IApiError = InternalError> {
+export class Result<TSuccess, TError extends HttpException = InternalServerErrorException> {
   private ok: boolean;
   result?: TSuccess;
   error?: TError | null | undefined;
@@ -16,7 +15,7 @@ export class Result<TSuccess, TError extends IApiError = InternalError> {
     return new Result<T>(true, value);
   }
 
-  public static fail<T, E extends IApiError>(error: E): Result<T, E> {
+  public static fail<T, E extends HttpException = InternalServerErrorException>(error: E): Result<T, E> {
     return new Result<T, E>(false, undefined, error);
   }
 
@@ -24,17 +23,15 @@ export class Result<TSuccess, TError extends IApiError = InternalError> {
     return this.ok;
   }
 
-  whenOk(fn: (value: TSuccess) => void): Result<TSuccess, TError> {
+  whenOk<TReturn>(fn: (value: TSuccess) => TReturn): TReturn {
     if (this.ok) {
-      fn(this.result!);
+      return fn(this.result!);
     }
-    return this;
   }
 
-  whenFail(fn: (error: TError) => void): Result<TSuccess, TError> {
+  whenFail<TReturn>(fn: (error: TError) => TReturn): TReturn {
     if (!this.ok) {
-      fn(this.error!);
+      return fn(this.error!);
     }
-    return this;
   }
 }

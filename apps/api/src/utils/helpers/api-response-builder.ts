@@ -1,10 +1,8 @@
-import { HttpStatus } from '@nestjs/common';
+import { HttpException, HttpStatus, InternalServerErrorException } from '@nestjs/common';
 import { Response } from 'express';
-import { InternalError } from '../../common/errors/internal-error.error';
 import { Result } from '../../common/result/result.class';
-import { IApiError } from '../../models/api-error.interface';
 
-export class ApiResponseBuilder<TSuccess, TError extends IApiError = InternalError> {
+export class ApiResponseBuilder<TSuccess, TError extends HttpException = InternalServerErrorException> {
   private response: Response;
   private result: Result<TSuccess, TError>;
   private errorMessage: string;
@@ -42,7 +40,7 @@ export class ApiResponseBuilder<TSuccess, TError extends IApiError = InternalErr
     });
 
     this.result.whenFail((error) => {
-      this.response.status(error.statusCode).json({ error: this.errorMessage ?? error.message });
+      this.response.status(error.getStatus()).json({ error: this.errorMessage ?? error.message });
     });
 
     return this.response;
