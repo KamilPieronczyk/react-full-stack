@@ -12,6 +12,31 @@ datasource db {
 }
 
 model User {
-  id    String @id @default(auto()) @map("_id") @db.ObjectId
-  email String
+  id      String @id @default(auto()) @map("_id") @db.ObjectId
+  auth0Id String @unique
+  email   String
+  name    String
+  tasks   Task[]
+}
+
+model Category {
+  id         String @id @default(auto()) @map("_id") @db.ObjectId
+  name       String
+  color      String
+  uniqueName String @unique
+  tasks      Task[]
+}
+
+model Task {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  name        String
+  description String
+  completed   Boolean  @default(false)
+  completedAt DateTime
+  category    Category @relation(fields: [categoryId], references: [id])
+  categoryId  String   @db.ObjectId
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String   @db.ObjectId
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

@@ -37,6 +37,13 @@
         "command": "npx prisma generate --schema ./src/prisma/schema.prisma",
         "cwd": "libs/database"
       }
+    },
+    "seed-database": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "ts-node --project tsconfig.lib.json ./src/prisma/seed.ts",
+        "cwd": "libs/database"
+      }
     }
   },
   "tags": []

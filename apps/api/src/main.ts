@@ -23,7 +23,7 @@ async function bootstrap() {
 
   const port = process.env.PORT || 3000;
   await app.listen(port);
-  Logger.log(`🚀 Application is running on: http://localhost:${port}/api`);
+  Logger.log(`🚀 Application is running on: http://localhost:${port}/swagger`);
 }
 
 function addSwagger(app: INestApplication) {
@@ -35,7 +35,11 @@ function addSwagger(app: INestApplication) {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('swagger', app, document);
+  SwaggerModule.setup('swagger', app, document, {
+    swaggerOptions: {
+      persistAuthorization: true,
+    },
+  });
 }
 
 function configureApp(app: INestApplication) {
