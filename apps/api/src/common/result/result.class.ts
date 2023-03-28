@@ -16,6 +16,9 @@ export class Result<TSuccess, TError extends HttpException = InternalServerError
   }
 
   public static fail<T, E extends HttpException = InternalServerErrorException>(error: E): Result<T, E> {
+    if (error instanceof Error) {
+      error = new InternalServerErrorException(error) as E;
+    }
     return new Result<T, E>(false, undefined, error);
   }
 

@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
+import { User } from '@react-full-stack/database';
 import * as dotenv from 'dotenv';
 import { passportJwtSecret } from 'jwks-rsa';
 import { ExtractJwt, Strategy } from 'passport-jwt';
 import { isJwtPayload } from '../../../utils/guards/is-jwt-payload';
-import { IJwtPayload } from './../../../models/auth/jwt-payload.interface';
 import { AuthService } from './auth.service';
 
 dotenv.config();
@@ -27,10 +27,10 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
     });
   }
 
-  async validate(payload: unknown): Promise<IJwtPayload> {
+  async validate(payload: unknown): Promise<User> {
     if (isJwtPayload(payload)) {
-      await this.authService.createOrUpdateUserFromJwt(payload);
-      return payload;
+      const user = await this.authService.createOrUpdateUserFromJwt(payload);
+      return user;
     }
 
     throw new Error('Invalid JWT payload');

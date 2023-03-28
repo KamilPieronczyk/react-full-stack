@@ -17,4 +17,32 @@ export class CategoriesService {
       return Result.fail(error);
     }
   }
+
+  async getCategoriesCompletion(userId: string): Promise<Result<ICategory[]>> {
+    try {
+      const tasksCompletion = await this.prisma.task.groupBy({
+        by: ['categoryId'],
+        where: {
+          userId,
+        },
+        _count: {
+          _all: true,
+          completed: true,
+        },
+      });
+
+      const categories = await this.prisma.category.findMany({
+        where: {
+          id: {
+            in: tasksCompletion.map((category) => category.categoryId),
+          },
+        },
+      });
+
+      const mappedCategories = this.categoryMapper.toResponseWithProgress(tasksCompletion, categories);
+      return Result.ok(mappedCategories);
+    } catch (error) {
+      return Result.fail(error);
+    }
+  }
 }

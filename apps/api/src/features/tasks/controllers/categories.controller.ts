@@ -1,6 +1,7 @@
 import { Controller, Get, HttpCode, Res } from '@nestjs/common';
+import { User } from '@react-full-stack/database';
 import { Response } from 'express';
-import { Authorize } from '../../../core/decorators';
+import { Authorize, AuthUser } from '../../../core/decorators';
 import { ApiResponseBuilder } from '../../../utils/helpers/api-response-builder';
 import { CategoriesService } from '../services/categories.service';
 
@@ -13,5 +14,14 @@ export class CategoriesController {
   @HttpCode(200)
   async getAll(@Res({ passthrough: true }) res: Response) {
     new ApiResponseBuilder(res, await this.categoriesService.getAll()).checkForNoContent().build();
+  }
+
+  @Authorize()
+  @Get('completion')
+  @HttpCode(200)
+  async getCategoriesCompletion(@AuthUser() user: User, @Res({ passthrough: true }) res: Response) {
+    new ApiResponseBuilder(res, await this.categoriesService.getCategoriesCompletion(user.id))
+      .checkForNoContent()
+      .build();
   }
 }

@@ -1,5 +1,5 @@
-import { IJwtPayload } from '../auth';
+import { User } from '@react-full-stack/database';
 
 export interface IAuthRequest extends Request {
-  user: IJwtPayload;
+  user: User;
 }

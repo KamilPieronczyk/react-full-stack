@@ -1,9 +1,8 @@
 import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+import { User as TUser } from '@react-full-stack/database';
 import { IAuthRequest } from '../../models';
-import { toUserPayload } from '../../utils/mappers';
-import { IUserJWTPayload } from './../../models/auth/user-payload.interface';
 
-export const User = createParamDecorator((data: unknown, ctx: ExecutionContext): IUserJWTPayload => {
+export const AuthUser = createParamDecorator((data: unknown, ctx: ExecutionContext): TUser => {
   const request = ctx.switchToHttp().getRequest() as IAuthRequest;
-  return toUserPayload(request.user);
+  return request.user;
 });

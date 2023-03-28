@@ -1,12 +1,12 @@
 import { Controller, Get } from '@nestjs/common';
-import { Authorize, User } from '../../../core/decorators';
-import { IUserJWTPayload } from '../../../models/auth/user-payload.interface';
+import { User } from '@react-full-stack/database';
+import { Authorize, AuthUser } from '../../../core/decorators';
 
 @Controller('tasks')
 export class TasksController {
   @Authorize()
   @Get()
-  getUser(@User() user: IUserJWTPayload) {
+  getUser(@AuthUser() user: User) {
     return user;
   }
 }
