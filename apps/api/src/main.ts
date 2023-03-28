@@ -48,11 +48,7 @@ function configureApp(app: INestApplication) {
 
 function configureCORS(app: INestApplication) {
   app.enableCors();
-  app.useGlobalPipes(
-    new ValidationPipe({
-      disableErrorMessages: true,
-    })
-  );
+  app.useGlobalPipes(new ValidationPipe());
 }
 
 bootstrap();

@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { ICategory } from '@react-full-stack/models';
+import { CategoryType, ICategory } from '@react-full-stack/models';
 import { Result } from '../../../common/result/result.class';
 import { PrismaService } from '../../../prisma/prisma.service';
 import { CategoryMapper } from '../mappers/category.mapper';
@@ -44,5 +44,15 @@ export class CategoriesService {
     } catch (error) {
       return Result.fail(error);
     }
+  }
+
+  async getCategoryIdByKey(key: CategoryType): Promise<string> {
+    const category = await this.prisma.category.findUnique({
+      where: {
+        uniqueName: key,
+      },
+    });
+
+    return category.id;
   }
 }

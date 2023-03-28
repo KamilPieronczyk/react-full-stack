@@ -26,7 +26,7 @@ export class Result<TSuccess, TError extends HttpException = InternalServerError
     return this.ok;
   }
 
-  whenOk<TReturn>(fn: (value: TSuccess) => TReturn): TReturn {
+  whenOk<TReturn>(fn: (value?: TSuccess) => TReturn): TReturn {
     if (this.ok) {
       return fn(this.result!);
     }
