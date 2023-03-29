@@ -12,14 +12,14 @@ export class CategoriesController {
   @Authorize()
   @Get()
   @HttpCode(200)
-  async getAll(@Res({ passthrough: true }) res: Response) {
+  async getAll(@Res() res: Response) {
     new ApiResponseBuilder(res, await this.categoriesService.getAll()).checkForNoContent().build();
   }
 
   @Authorize()
   @Get('completion')
   @HttpCode(200)
-  async getCategoriesCompletion(@AuthUser() user: User, @Res({ passthrough: true }) res: Response) {
+  async getCategoriesCompletion(@AuthUser() user: User, @Res() res: Response) {
     new ApiResponseBuilder(res, await this.categoriesService.getCategoriesCompletion(user.id))
       .checkForNoContent()
       .build();
