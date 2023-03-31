@@ -12,6 +12,7 @@ const defaultProps: ButtonProps = {
 const StyledMuiButton = styled(MuiButton)<ButtonProps>({
   borderRadius: 999,
   paddingInline: '3ch',
+  textDecoration: 'none !important',
 });
 
 export const Button = (props: ButtonProps) => {
